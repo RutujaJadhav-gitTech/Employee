@@ -27,8 +27,10 @@ public class EmployeeService {
    
    
 	public String addemployee(Employee employee) throws ServiceException {
-	    Employee employee2 = employeeRepository.save(employee);
+		Employee	employee2=employeeRepository.save(employee);
+		employee2=null;
 	    if (employee2 != null) {
+
 	        return "Add employee successfully";
 	    } else {
 	        throw new ServiceException(new EmpError("500", "Not Save Successfully"));

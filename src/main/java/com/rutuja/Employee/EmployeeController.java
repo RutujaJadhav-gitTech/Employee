@@ -18,16 +18,8 @@ public class EmployeeController {
 
     @PostMapping("/addEmployee")
     public String addEmployee(@RequestBody Employee employee) throws ServiceException, ValidationException {
-        try {
-        	this.saveValidation.validate(employee);
-            return employeeService.addemployee(employee);
-        } catch (ServiceException e) {
-            e.printStackTrace();
-            return "Error: " + e.getErrorMessage().getErrMsg();
-        }
-        catch (ValidationException e) {
-        	return e.getErrorList().toString();
-        }
+        saveValidation.validate(employee);
+        return employeeService.addemployee(employee);
     }
 
     @PutMapping("/updateEmployee")
